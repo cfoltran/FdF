@@ -6,7 +6,7 @@
 #    By: cvignal <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/01/28 15:02:57 by cvignal          ###   ########.fr        #
+#    Updated: 2019/01/28 15:37:17 by cvignal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@
 NAME	:=	fdf
 
 SRC		=	fdf.c \
+			parser.c
 
 SRCDIR	:=	src
 OBJDIR	:=	obj

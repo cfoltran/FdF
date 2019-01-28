@@ -6,21 +6,30 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/01/28 13:32:07 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/01/28 15:50:57 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
+#include "parser.h"
+#include "mlx.h"
 
-int main(int argc, char const **argv)
+static void	usage(void)
 {
-    (void) argv;
-    (void) argc;
-    void *mlx;
-    void *window;
+	ft_printf("usage : fdf file1\n");
+}
 
-    mlx = mlx_init();
-    window = mlx_new_window(mlx, WINDOW_X, WINDOW_Y, "FdF");
-    mlx_loop(mlx);
+int main(int ac, char **av)
+{
+	t_list	*points;
+
+    if (ac != 2)
+	{
+		usage();
+		return (1);
+	}
+	if (!(points = fdf_parser(av[1])))
+		return (1);
     return (0);
 }

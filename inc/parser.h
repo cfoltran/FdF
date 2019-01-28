@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/01/28 15:37:47 by cvignal          ###   ########.fr       */
+/*   Created: 2019/01/28 15:08:31 by cvignal           #+#    #+#             */
+/*   Updated: 2019/01/28 15:41:49 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-#define FDF_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# define WINDOW_X 1024
-# define WINDOW_Y 800
+#include "libft.h"
+
+typedef struct	s_coord
+{
+	int	x;
+	int	y;
+	int	z;
+}				t_coord;
+
+t_list	*fdf_parser(char *name);
 
 #endif
