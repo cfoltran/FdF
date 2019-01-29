@@ -6,7 +6,7 @@
 /*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 15:10:34 by cvignal           #+#    #+#             */
-/*   Updated: 2019/01/28 15:52:17 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/01/28 18:01:25 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,60 @@
 #include "libft.h"
 #include "parser.h"
 
-static int	add_coords(t_list **list, int i, char *line)
+static int	fill_points(t_map *map, t_list *list)
 {
-	char	**tab;
+	int		i;
 	int		j;
-	t_coord	*point;
-	t_list	*new;
+	char	**tab;
+	t_list	*curr;
 
-	if (!(tab = ft_strsplit(line, " ")))
-		return (0);
-	j = 0;
-	while (tab[j])
+	curr = list;
+	i = 0;
+	while (curr)
 	{
-		if (!(point = (t_coord*)malloc(sizeof(t_coord))))
+		if (!(tab = ft_strsplit(curr->content, " ")))
 			return (0);
-		point->x = i;
-		point->y = j;
-		point->z = ft_atoi(tab[j]);
-		if (!(new = ft_lstnew(point, sizeof(point))))
+		map->y_max = ft_tablen(tab);
+		if (!(map->points[i] = (int*)malloc(sizeof(int) * map->y_max)))
 			return (0);
-		ft_lstapp(list, new);
-		j++;
-		free(point);
+		j = 0;
+		while (tab[j])
+		{
+			map->points[i][j] = ft_atoi(tab[j]);
+			j++;
+		}
+		ft_deltab(&tab);
+		i++;
+		curr = curr->next;
 	}
 	return (1);
 }
 
-t_list	*fdf_parser(char *name)
+t_map		*fdf_parser(char *file_name)
 {
-	t_list	*points;
 	int		fd;
+	t_list	*list;
 	char	*line;
-	int		i;
+	t_list	*new;
+	t_map	*ret;
 
-	points = NULL;
-	if ((fd = open(name, O_RDONLY)) == -1)
+	list = NULL;
+	if ((fd = open(file_name, O_RDONLY)) == -1)
 		return (NULL);
-	i = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (!add_coords(&points, i, line))
+		if (!(new = ft_lstnew(line, ft_strlen(line) + 1)))
 			return (NULL);
-		i++;
+		ft_lstapp(&list, new);
 		free(line);
 	}
-	return (points);
+	if (!(ret = (t_map*)malloc(sizeof(t_map))))
+		return (NULL);
+	ret->x_max = ft_lstlen(list);
+	ret->y_max = 0;
+	if (!(ret->points = (int**)malloc(sizeof(int*) * ret->x_max)))
+		return (NULL);
+	if (!fill_points(ret, list))
+		return (NULL);
+	return (ret);
 }
