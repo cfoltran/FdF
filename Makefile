@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cvignal <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/01/28 18:05:55 by cvignal          ###   ########.fr        #
+#    Updated: 2019/01/30 18:29:34 by clfoltra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@
 NAME	:=	fdf
 
 SRC		=	fdf.c \
-			parser.c
+			parser.c \
+			init.c \
+			hook.c \
+			draw.c
 
 SRCDIR	:=	src
 OBJDIR	:=	obj
