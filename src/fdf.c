@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/01/30 18:30:57 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/01/30 20:51:34 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			init(t_env *env)
 {
 	env->mlx = mlx_init();
 	window(env);
-	env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, "FdF");
+	env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, env->name);
 	mlx_key_hook(env->window, keylogger, 0);
 	draw(env);
 	mlx_loop(env->mlx);
@@ -32,6 +32,7 @@ int			ft_fdf(char *argv)
 	t_map *map;
 
 	map = fdf_parser(argv);
+	env.name = argv;
 	init(&env);
 	return (0);
 }
