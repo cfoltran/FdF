@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/01/30 20:49:47 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/01/31 12:00:31 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ typedef struct      s_env {
 void    window(t_env *env);
 int     keylogger(int code);
 void    draw_segment(int x1, int y1, int x2, int y2, t_env *env);
-int     draw(t_env *env);
+int     mlx(t_env *env);
 
 #endif
