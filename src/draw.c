@@ -14,22 +14,34 @@
 #include "mlx.h"
 #include <math.h>
 
-static void iso(int *x, int *y, int z)
+void		display_usage(t_env *env)
 {
-    int previous_x;
-    int previous_y;
+	int		x;
+	int		y;
 
-    previous_x = *x;
-    previous_y = *y;
-    *x = (previous_x - previous_y) * cos(0.523599);
-    *y = -z + (previous_x + previous_y) * sin(0.523599);
+	x = WINDOW_X - 220;
+	y = 20;
+	mlx_string_put(env->mlx, env->window, x + 40, y, 0xFFFFFF,
+			"--- COMMANDS ---");
+	mlx_string_put(env->mlx, env->window, x, y + 40, 0xFFFFFF,
+			"     Exit       ESC");
 }
 
-void        img_init(t_env *env)
+void        img_init(t_env *env, t_img *img)
 {
-    env->image = mlx_new_image(env->mlx, env->win_h, env->win_w);
-    env->mlx_infos = mlx_get_data_addr(env->image, &env->bpp, &env->s_line, 
-        &env->endian);
+    img->image = mlx_new_image(env->mlx, env->win_w, env->win_h);
+    display_usage(env);
+    img->datas = mlx_get_data_addr(img->image, &img->bpp,
+			&img->s_line, &img->endian);
+    // mlx_destroy_image(env->mlx, env->img->image);
+}
+
+static int  iso(int x, int y, t_env *env)
+{
+    int z;
+
+    z = env->map->points[x][y];
+    return (1);
 }
 
 int         **isometric_chart(t_env *env)
@@ -42,7 +54,7 @@ int         **isometric_chart(t_env *env)
     {
         y = -1;
         while (++y < env->map->y_max)
-            iso(&x, &y, env->map->points[x][y]);
+            env->map->points[x][0] = iso(x, y, env);
         y++;
     }
     return (env->map->points);
@@ -69,8 +81,11 @@ void        draw(t_env *env)
 		y = -1;
 		while (++y < env->map->y_max)
 		{
-           draw_line(env, x, y);
-           draw_column(env, x, y);
+            if (env->map->points[x][y] > 0)
+            {
+                draw_line(env, y, x);
+                draw_column(env, y, x);
+            }
         }
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 15:08:31 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/04 11:21:12 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/05 16:03:02 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct	s_map
 {
-	int	**points;
-	int	x_max;
-	int	y_max;
+	int			**points;
+	int			x_max;
+	int			y_max;
 }				t_map;
 
 t_map			*fdf_parser(char *file_name);
