@@ -30,18 +30,41 @@ void		display_usage(t_env *env)
 void        img_init(t_env *env, t_img *img)
 {
     img->image = mlx_new_image(env->mlx, env->win_w, env->win_h);
-    display_usage(env);
-    img->datas = mlx_get_data_addr(img->image, &img->bpp,
+    img->datas = (int *)mlx_get_data_addr(img->image, &img->bpp,
 			&img->s_line, &img->endian);
-    // mlx_destroy_image(env->mlx, env->img->image);
 }
 
-static int  iso(int x, int y, t_env *env)
+void       refresh(t_env *env)
+{
+    t_img img;
+
+    img.image = mlx_new_image(env->mlx, env->win_w, env->win_h);
+    img.datas = (int *)mlx_get_data_addr(img.image, &img.bpp,
+			 &img.s_line, &img.endian);
+    env->img = &img;
+	draw(env);
+    mlx_put_image_to_window(env->mlx, env->window,
+		env->img->image, 0, 0);
+    display_usage(env);
+    mlx_destroy_image(env->mlx, env->img->image);
+
+}
+
+static int  iso(int x, int y, t_env *env, int option)
 {
     int z;
-
+    
     z = env->map->points[x][y];
-    return (1);
+	if (option == 1)
+		return (((x * cos(-1) * env->zoom + y *
+						cos(-1 + 2) * env->zoom + z
+						* env->zoom / 30 * env->win_w) + (env->win_h / 4)));
+	else
+		return (((x * sin(-1) * env->zoom + y *
+						sin(-1 + 1000) * env->zoom
+						+ z
+						* env->zoom / 30 * env->win_h)
+					+ (env->win_w / 2.25)));
 }
 
 int         **isometric_chart(t_env *env)
@@ -53,8 +76,12 @@ int         **isometric_chart(t_env *env)
     while (++x < env->map->x_max)
     {
         y = -1;
+        printf("ok");
         while (++y < env->map->y_max)
-            env->map->points[x][0] = iso(x, y, env);
+        {
+            env->map->points[x][0] = iso(x, y, env, 1);
+            env->map->points[x][1] = iso(x, y, env, 0);
+        }
         y++;
     }
     return (env->map->points);
@@ -76,16 +103,14 @@ void        draw(t_env *env)
     int y;
     
     x = -1;
+    // env->map->points = isometric_chart(env);
     while (++x < env->map->x_max)
 	{
 		y = -1;
 		while (++y < env->map->y_max)
 		{
-            if (env->map->points[x][y] > 0)
-            {
-                draw_line(env, y, x);
-                draw_column(env, y, x);
-            }
+            draw_line(env, y, x);
+            // draw_column(env, y, x);
         }
 	}
 }

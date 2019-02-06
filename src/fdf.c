@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/05 16:07:29 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/06 16:50:17 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@
 
 int			init(t_env *env)
 {
-	t_img img;
-
 	env->mlx = mlx_init();
 	window(env);
 	env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, env->name);
-	img_init(env, &img);
-	// isometric_chart(env);
-	draw(env);
-	// mlx_put_image_to_window(env->mlx, env->window, env->img->datas, 0, 0);
-	mlx_key_hook(env->window, keylogger, 0);
+	refresh(env);
+	mlx_hook(env->window, 2, 5, keylogger, env);
+	mlx_loop_hook(env->mlx, key_repeat, env);
 	mlx_loop(env->mlx);
 	return (0);
 }
@@ -40,6 +36,7 @@ int			ft_fdf(char *argv)
 	env.map = map;
 	env.name = argv;
 	env.zoom = 50;
+	env.color = 0xFFFFF;
 	init(&env);
 	return (0);
 }
