@@ -50,43 +50,6 @@ void       refresh(t_env *env)
 
 }
 
-static int  iso(int x, int y, t_env *env, int option)
-{
-    int z;
-    
-    z = env->map->points[x][y];
-	if (option == 1)
-		return (((x * cos(-1) * env->zoom + y *
-						cos(-1 + 2) * env->zoom + z
-						* env->zoom / 30 * env->win_w) + (env->win_h / 4)));
-	else
-		return (((x * sin(-1) * env->zoom + y *
-						sin(-1 + 1000) * env->zoom
-						+ z
-						* env->zoom / 30 * env->win_h)
-					+ (env->win_w / 2.25)));
-}
-
-int         **isometric_chart(t_env *env)
-{
-    int x;
-    int y;
-
-    x = -1;
-    while (++x < env->map->x_max)
-    {
-        y = -1;
-        printf("ok");
-        while (++y < env->map->y_max)
-        {
-            env->map->points[x][0] = iso(x, y, env, 1);
-            env->map->points[x][1] = iso(x, y, env, 0);
-        }
-        y++;
-    }
-    return (env->map->points);
-}
-
 void		draw_line(t_env *env, int x, int y)
 {
     draw_segment(x * env->zoom, y * env->zoom, x * env->zoom, y * env->zoom, env);

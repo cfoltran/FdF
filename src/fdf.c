@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/06 16:50:17 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/06 18:59:12 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_fdf(char *argv)
 	env.map = map;
 	env.name = argv;
 	env.zoom = 50;
-	env.color = 0xFFFFF;
+	env.color = 0xFFFFFF;
 	init(&env);
 	return (0);
 }
