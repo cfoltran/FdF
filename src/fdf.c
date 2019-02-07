@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/07 15:03:30 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:08:23 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 int			init(t_env *env)
 {
 	env->mlx = mlx_init();
-	window(env);
 	env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, env->name);
 	refresh(env);
 	mlx_hook(env->window, 2, 5, keylogger, env);
@@ -37,6 +36,8 @@ int			ft_fdf(char *argv)
 	env.name = argv;
 	env.zoom = 50;
 	env.color = 0xFFFFFF;
+	env.win_w = WINDOW_X;
+    env.win_h = WINDOW_Y;
 	init(&env);
 	return (0);
 }

@@ -14,32 +14,6 @@
 #include "mlx.h"
 #include <math.h>
 
-void display_usage(t_env *env)
-{
-    int x;
-    int y;
-
-    x = WINDOW_X - 230;
-    y = 20;
-    mlx_string_put(env->mlx, env->window, x + 40, y, 0xFFFFFF,
-					"--- COMMANDS ---");
-    mlx_string_put(env->mlx, env->window, x + 40, y + 30, 0xFFFFFF,
-					"Exit      Escape");
-	mlx_string_put(env->mlx, env->window, x + 40, y + 60, 0xFFFFFF,
-					"Move      Arrows");
-	mlx_string_put(env->mlx, env->window, x + 40, y + 90, 0xFFFFFF,
-					"Zoom      	+    -");
-	mlx_string_put(env->mlx, env->window, x + 40, y + 120, 0xFFFFFF,
-					"Relief    	R    E");
-}	
-
-void img_init(t_env *env, t_img *img)
-{
-    img->image = mlx_new_image(env->mlx, env->win_w, env->win_h);
-    img->datas = (int *)mlx_get_data_addr(img->image, &img->bpp,
-                                          &img->s_line, &img->endian);
-}
-
 int iso(t_map *map, int x, int y, int opt)
 {
 	int z;
@@ -95,39 +69,38 @@ void refresh(t_env *env)
                                          &img.s_line, &img.endian);
     env->img = &img;
     apply_iso(env);
-    // draw(env);
-    mlx_put_image_to_window(env->mlx, env->window,
-                            env->img->image, 0, 0);
+    draw(env);
+    mlx_put_image_to_window(env->mlx, env->window, env->img->image, 0, 0);
     display_usage(env);
     mlx_destroy_image(env->mlx, env->img->image);
 }
 
-void draw_line(t_env *env, int x, int y)
+void draw_column(int i, t_env *env)
 {
-    draw_segment(x * env->zoom, y * env->zoom, x * env->zoom, y * env->zoom, env);
-}
+	t_pt pt;
 
-// void        draw_column(t_env *env, int x, int y, int x2, int y2)
-// {
-//     draw_segment(x * env->zoom, y * env->zoom, env->point->x1 * env->point->x1, y * env->zoom, env);
-// }
+	pt.x1 = env->iso[i][1];
+	pt.x2 = env->iso[i + 1][1];
+	// pt.y1 = env->iso[i][0];
+	// pt.y2 = env->iso[i][1];
+	// pt.dx = abs(pt.x2 - pt.x1);
+	// pt.dy = abs(pt.y2 - pt.y1);
+	// draw_segment(pt.x1, pt.y1, pt.x2, pt.y2, env);
+}
 
 void draw(t_env *env)
 {
-    int x;
-    int y;
+	int i;
+	int x;
 
-    x = -1;
-    while (++x < env->map->x_max)
-    {
-        y = -1;
-        while (++y < env->map->y_max)
-        {
-            if (env->map->points[x][y] > 0)
-            {
-                draw_line(env, y, x);
-            }
-            // draw_column(env, y, x);
-        }
-    }
+	i = -1;
+	x = 1;
+	while (++i < env->map->x_max * env->map->y_max)
+	{
+		if (i != (x * env->map->x_max))
+			draw_column(i, env);
+		else
+			x++;
+
+	}
 }
