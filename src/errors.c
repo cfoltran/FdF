@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/30 17:30:05 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/07 14:55:21 by clfoltra         ###   ########.fr       */
+/*   Created: 2019/02/07 14:56:51 by clfoltra          #+#    #+#             */
+/*   Updated: 2019/02/07 15:03:06 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
 
-void    draw_segment(int x1, int y1, int x2, int y2, t_env *env)
+void	errors(int code)
 {
-	int dx;
-	int dy;
-	int e;
-
-	e = x2 - x1;
-	dx = e * 2;
-	dy = (y2 - y1) * 2;
-	while (x1 <= x2)
-	{
-		x1++;
-		if ((e -= dy) <= 0)
-		{
-			y1++;
-			e += dx;
-					env->img->datas[y1 * env->win_h + x1] = env->color;
-		}
-		// env->img->datas[y1 * env->win_h + x1] = env->color;
-	}
+	if (code == 1)
+		ft_putendl("Usage : ./fdf <filename> [ case_size z_size ]");
+	if (code == 2)
+		ft_putendl("Erreur : failed to allocate memory");
 }
