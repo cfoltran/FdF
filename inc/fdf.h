@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/07 15:15:26 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:55:13 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <stdlib.h>
 #include "parser.h"
 
-#define WINDOW_X 1024
-#define WINDOW_Y 800
+#define WINDOW_X 1920
+#define WINDOW_Y 1080
 
 typedef struct	s_img
 {
@@ -48,6 +48,8 @@ typedef struct 	s_env
 	int 		zoom;
 	int 		pixels;
 	int 		color;
+	int			movex;
+	int			movey;
 	int 		**iso;
 	t_map		*map;
 	t_img		*img;
@@ -60,7 +62,7 @@ void 	draw(t_env *env);
 void 	refresh(t_env *env);
 void 	errors(int code);
 void	display_usage(t_env *env);
-int		keylogger(int code);
+int		keylogger(int code, t_env *env);
 int		**isometric_chart(t_env *env);
 int		key_repeat(int key, t_env *env);
 

@@ -6,7 +6,7 @@
 #    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/02/07 15:09:15 by clfoltra         ###   ########.fr        #
+#    Updated: 2019/02/08 16:04:40 by clfoltra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC		=	fdf.c \
 			parser.c \
 			hook.c \
 			draw.c \
-			bresenham.c \
 			errors.c \
 
 SRCDIR	:=	src
