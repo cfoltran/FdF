@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/08 18:21:04 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/11 12:32:41 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include "keymap.h"
 #include "mlx.h"
 
-/*https://openclassrooms.com/fr/courses/1389636-a-la-decouverte-de-laleatoire-et-des-probabilites/1389794-fabriquez-votre-propre-fonction-rand*/
-// int		change_color(t_env *env)
-// {
-	
-
-// }
+int		random_color()
+{
+	return (rand() % (((0xFFFF00 + 1) - 0x000000) + 0xFFFFFF));
+}
 
 void	display_usage(t_env *env)
 {
@@ -49,9 +47,9 @@ int		keylogger(int code, t_env *env)
 	(code == LEFT) ? env->movey -= 10 : 0;
 	(code == DOWN) ? env->movex += 10 : 0;
 	(code == UP) ? env->movex -= 10 : 0;
-	(code == PLUS) ? env->zoom += 1 : 0;
-	(code == MINUS) ? env->zoom -= 1 : 0;
-	// (code == C) ? env->color = change_color(env) : 0;
+	(code == MINUS) ? env->zoom += 1 : 0;
+	(code == PLUS) ? env->zoom -= 1 : 0;
+	(code == C) ? env->color = env->color = random_color() : 0;
 	mlx_clear_window(env->mlx, env->window);
 	refresh(env);
 	return (0);
