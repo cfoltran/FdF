@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cvignal <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/01/28 15:02:57 by cvignal          ###   ########.fr        #
+#    Updated: 2019/02/08 16:04:40 by clfoltra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@
 NAME	:=	fdf
 
 SRC		=	fdf.c \
+			parser.c \
+			hook.c \
+			draw.c \
+			errors.c \
 
 SRCDIR	:=	src
 OBJDIR	:=	obj
@@ -176,11 +180,11 @@ rdebug:	WFLAGS	:= -g3 -ggdb
 rdebug:	lre
 
 fsan:	WFLAGS	:= -g -fsanitize=address
-fsan:	LDFLAG	+= -fsanitize=address
+fsan:	LDFLAG	:= -fsanitize=address
 fsan:	all
 
 rfsan:	WFLAGS	:= -g -fsanitize=address
-fsan:	LDFLAG	+= -fsanitize=address
+fsan:	LDFLAG	:= -fsanitize=address
 rfsan:	lre
 
 #### TESTS ####

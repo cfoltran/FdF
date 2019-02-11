@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "struct.h": "c",
+        "unistd.h": "c",
+        "fcntl.h": "c",
+        "parser.h": "c"
+    }
+}

@@ -32,6 +32,10 @@ dep/
 # Object files
 obj/
 
+# Demos
+demos/
+maps/
+
 # Command restult buffer
 .tmp.txt
 
