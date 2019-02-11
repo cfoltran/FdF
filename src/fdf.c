@@ -5,33 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/01/28 14:20:37 by clfoltra         ###   ########.fr       */
-=======
-/*   Updated: 2019/02/08 17:38:14 by clfoltra         ###   ########.fr       */
->>>>>>> clement
+/*   Created: 2019/02/11 12:38:56 by clfoltra          #+#    #+#             */
+/*   Updated: 2019/02/11 12:39:12 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fdf.h"
 #include "libft.h"
 #include "parser.h"
 #include "mlx.h"
 
-<<<<<<< HEAD
-int     key_plus(int key, void *param)
-{
-    (void) key;
-    (void) param;
-    ft_putchar('+');
-    return (0);
-}
-
-int     main(int argc, char const **argv)
-=======
 int			init(t_env *env)
->>>>>>> clement
 {
 	env->mlx = mlx_init();
 	env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, env->name);
@@ -46,14 +31,6 @@ int			ft_fdf(char *argv)
 	t_env	env;
 	t_map	*map;
 
-<<<<<<< HEAD
-    mlx = mlx_init();
-    window = mlx_new_window(mlx, WINDOW_X, WINDOW_Y, "FdF");
-    mlx_pixel_put(mlx, window, 250, 250, 0xFFFFFF);
-    mlx_key_hook(window, key_plus, (void*)0);
-    mlx_loop(mlx);
-    return (0);
-=======
 	map = fdf_parser(argv);
 	env.movex = 0;
 	env.movey = 0;
@@ -74,5 +51,4 @@ int			main(int ac, char **av)
 	else
 		ft_fdf(av[1]);
 	return (0);
->>>>>>> clement
 }
