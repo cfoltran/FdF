@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 12:32:41 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/11 15:16:14 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 #include "keymap.h"
 #include "mlx.h"
 
-int		random_color()
+void	update_relief(t_env *env, int opt)
 {
-	return (rand() % (((0xFFFF00 + 1) - 0x000000) + 0xFFFFFF));
+	int x;
+	int y;
+
+	x = -1;
+	while (++x < env->map->x_max)
+	{
+		y = -1;
+		while (++y < env->map->y_max)
+			if (env->map->points[x][y] > 0)
+				env->map->points[x][y] += (opt == 0 &&
+				env->map->points[x][y] - 1 > 0) ? -1 : 1;
+	}
 }
 
 void	display_usage(t_env *env)
@@ -27,17 +38,17 @@ void	display_usage(t_env *env)
 	x = WINDOW_X - 230;
 	y = 20;
 	mlx_string_put(env->mlx, env->window, x + 40, y, 0xFFFFFF,
-				   	"--- COMMANDS ---");
+	"--- COMMANDS ---");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 30, 0xFFFFFF,
-				   	"Exit      Escape");
+	"Exit      Escape");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 60, 0xFFFFFF,
-				   	"Move      Arrows");
+	"Move      Arrows");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 90, 0xFFFFFF,
-				   	"Zoom      	+    -");
+	"Zoom      	+    -");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 120, 0xFFFFFF,
-				   	"Relief    	R    E");
+	"Relief    	R    E");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 150, 0xFFFFFF,
-					"Color    	   C");
+	"Color    	   C");
 }
 
 int		keylogger(int code, t_env *env)
@@ -49,15 +60,11 @@ int		keylogger(int code, t_env *env)
 	(code == UP) ? env->movex -= 10 : 0;
 	(code == MINUS) ? env->zoom += 1 : 0;
 	(code == PLUS) ? env->zoom -= 1 : 0;
-	(code == C) ? env->color = env->color = random_color() : 0;
+	(code == R) ? update_relief(env, 1) : 0;
+	(code == E) ? update_relief(env, 0) : 0;
+	if (code == C)
+		env->color = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
 	mlx_clear_window(env->mlx, env->window);
 	refresh(env);
-	return (0);
-}
-
-int		key_repeat(int key, t_env *env)
-{
-	(void)key;
-	(void)env;
 	return (0);
 }

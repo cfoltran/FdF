@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 13:41:36 by cvignal           #+#    #+#             */
-/*   Updated: 2019/01/28 17:57:04 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/11 15:24:38 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ int					ft_dprintf(int fd, const char *format, ...);
 void				quicksort(char **array, int first, int last);
 int					ft_match(char *pattern, char *str);
 int					ft_tablen(char **tab);
+void				ft_swapint(int *a, int *b);
 
 #endif
