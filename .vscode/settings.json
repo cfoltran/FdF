@@ -3,6 +3,7 @@
         "struct.h": "c",
         "unistd.h": "c",
         "fcntl.h": "c",
-        "parser.h": "c"
+        "parser.h": "c",
+        "libft.h": "c"
     }
 }

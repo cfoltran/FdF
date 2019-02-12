@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 15:28:33 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:09:57 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ typedef struct 	s_env
 	t_pt		*point;
 } 				t_env;
 
-void 	draw_segment(int x1, int y1, int x2, int y2, t_env *env);
 void	case1(t_env *env, t_pt pt);
+void	case2(t_env *env, t_pt pt);
+void	case3(t_env *env, t_pt pt);
+void	case4(t_env *env, t_pt pt);
 void 	img_init(t_env *env, t_img *img);
 void 	draw(t_env *env);
 void 	refresh(t_env *env);

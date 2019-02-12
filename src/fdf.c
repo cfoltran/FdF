@@ -6,14 +6,13 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 15:34:51 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/12 18:00:43 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "libft.h"
 #include "parser.h"
 #include "mlx.h"
+#include "fdf.h"
 
 void	apply_iso(t_env *env)
 {
