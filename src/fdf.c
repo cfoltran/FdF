@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/12 18:00:43 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:33:32 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ int		ft_fdf(char *argv)
 	t_env	env;
 	t_map	*map;
 
-	map = fdf_parser(argv);
+	if (!(map = fdf_parser(argv)))
+		errors(3);
 	env.movex = 0;
 	env.movey = 0;
 	env.map = map;
-	env.name = argv;
-	env.zoom = 10;
+	env.name = ft_strjoin("FDF - ", argv);
+	env.zoom = 30;
 	env.color = 0xFFFFFF;
 	env.win_w = WINDOW_X;
 	env.win_h = WINDOW_Y;

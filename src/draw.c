@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/12 18:12:31 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:34:52 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	draw_line(int i, t_env *env)
 	pt.dy = abs(pt.y2 - pt.y1);
 	if (pt.dx >= pt.dy && pt.dx != 0 && pt.dy != 0)
 		case1(env, pt);
-	if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
-		case2(env, pt);
-	if (pt.dx == 0)
-		case3(env, pt);
-	if (pt.dy == 0)
-		case4(env, pt);
+	// if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
+	// 	case2(env, pt);
+	// if (pt.dx == 0)
+	// 	case3(env, pt);
+	// if (pt.dy == 0)
+	// 	case4(env, pt);
 }
 
 void	draw_column(int i, t_env *env)
@@ -66,36 +66,36 @@ void	draw_column(int i, t_env *env)
 	t_pt pt;
 
 	pt.x1 = env->iso[i][1];
-	pt.x2 = env->iso[i + env->map->x_max][1];
+	pt.x2 = env->iso[i + env->map->y_max][1];
 	pt.y1 = env->iso[i][0];
-	pt.y2 = env->iso[i + env->map->x_max][0];
+	pt.y2 = env->iso[i + env->map->y_max][0];
 	pt.dx = abs(pt.x2 - pt.x1);
 	pt.dy = abs(pt.y2 - pt.y1);
 	if (pt.dx >= pt.dy && pt.dx != 0 && pt.dy != 0)
 		case1(env, pt);
-	if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
-		case2(env, pt);
-	if (pt.dx == 0)
-		case3(env, pt);
-	if (pt.dy == 0)
-		case4(env, pt);
+	// if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
+	// 	case2(env, pt);
+	// if (pt.dx == 0)
+	// 	case3(env, pt);
+	// if (pt.dy == 0)
+	// 	case4(env, pt);
 }
 
 void	draw(t_env *env)
 {
 	int i;
-	int	x;
+	int	y;
 
 	i = -1;
-	x = 1;
+	y = 1;
 	while (++i < env->map->x_max * env->map->y_max - 1)
 	{
-		if (i != (x * env->map->x_max) - 1)
+		if (i != (y * env->map->y_max) - 1)
 			draw_line(i, env);
 		else
-			x++;
+			y++;
 	}
 	i = -1;
-	// while (++i < env->map->x_max * env->map->y_max - env->map->x_max)
-	// 	draw_column(i, env);
+	while (++i < env->map->x_max * env->map->y_max - env->map->y_max)
+		draw_column(i, env);
 }
