@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/18 13:34:52 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:47:02 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	init_iso_tab(t_map *map, t_env *env)
 
 	i = -1;
 	if (!(tab = (int**)malloc(sizeof(int*) * (map->x_max * map->y_max))))
-		exit(1);
+		errors(MEM);
 	while (++i < map->x_max * map->y_max)
 		if (!(tab[i] = (int*)malloc(sizeof(int) * 2)))
-			exit(1); // TODO error manager
+			errors(MEM);
 	env->iso = tab;
 }
 
