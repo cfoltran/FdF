@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 15:10:34 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/18 18:46:48 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:49:21 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	fill_points(t_map *map, t_list *list)
 		i++;
 		curr = curr->next;
 	}
+	ft_lstdel(&list, &ft_delelt);
 	return (1);
 }
 
