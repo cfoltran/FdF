@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/18 18:42:53 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:44:32 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	refresh(t_env *env)
 	env->img = &img;
 	apply_iso(env);
 	draw(env);
-	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image, 0, 0)))
+	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image
+	, 0, 0)))
 		errors(MLX);
 	display_usage(env);
 	mlx_destroy_image(env->mlx, env->img->image);
@@ -57,7 +58,8 @@ void	refresh(t_env *env)
 int		init(t_env *env)
 {
 	(!(env->mlx = mlx_init())) ? errors(MLX) : 0;
-	if (!(env->window = mlx_new_window(env->mlx, env->win_w, env->win_h, env->name)))
+	if (!(env->window = mlx_new_window(env->mlx, env->win_w, env->win_h,
+		env->name)))
 		errors(MLX);
 	refresh(env);
 	(!(mlx_hook(env->window, 2, 5, keylogger, env))) ? errors(MLX) : 0;
@@ -80,6 +82,7 @@ int		ft_fdf(char *argv)
 	env.color = 0xFFFFFF;
 	env.win_w = WINDOW_X;
 	env.win_h = WINDOW_Y;
+	env.iso = NULL;
 	init(&env);
 	return (0);
 }
