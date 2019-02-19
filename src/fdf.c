@@ -5,22 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2019/02/11 12:38:56 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 12:39:12 by clfoltra         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-#include "fdf.h"
-#include "libft.h"
-=======
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/18 19:44:32 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/19 14:13:34 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
->>>>>>> origin/clement
 #include "parser.h"
 #include "mlx.h"
 #include "fdf.h"
@@ -84,7 +73,8 @@ int		ft_fdf(char *argv)
 	t_map	*map;
 
 	ft_strcmp(&argv[ft_strlen(argv) - 4], ".fdf") != 0 ? errors(ARG) : 0;
-	(!(map = fdf_parser(argv))) ? errors(3) : 0;
+	if (!(map = fdf_parser(argv)))
+		errors(3);
 	env.movex = 0;
 	env.movey = 0;
 	env.map = map;
