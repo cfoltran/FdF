@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cvignal <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/20 14:14:18 by cvignal           #+#    #+#              #
-#    Updated: 2019/01/28 17:57:18 by cvignal          ###   ########.fr        #
+#    Updated: 2019/02/11 15:22:21 by clfoltra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,7 +137,8 @@ SRC			= ft_memset.c			\
 			  ft_lstlen.c		\
 			  ft_quicksort.c	\
 			  ft_match.c		\
-			  ft_tablen.c
+			  ft_tablen.c		\
+			  ft_swapint.c
 
 SRCDIR  :=      src
 OBJDIR  :=      obj

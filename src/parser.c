@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 15:10:34 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/06 16:49:54 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:11:45 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	fill_points(t_map *map, t_list *list)
 		i++;
 		curr = curr->next;
 	}
+	ft_lstdel(&list, &ft_delelt);
 	return (1);
 }
 
@@ -55,7 +56,7 @@ t_map		*fdf_parser(char *file_name)
 	t_map	*ret;
 
 	list = NULL;
-	if ((fd = open(file_name, O_RDONLY)) == -1)
+	if ((fd = open(file_name, O_RDONLY | O_NOFOLLOW)) == -1)
 		return (NULL);
 	while (get_next_line(fd, &line) == 1)
 	{
