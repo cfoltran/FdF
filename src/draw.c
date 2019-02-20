@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/20 12:40:57 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:20:09 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int		iso(t_env *env, int x, int y, int opt)
 		return (((x * cos(-1) * env->zoom + y * cos(1) * env->zoom + z) 
 				+ (env->win_h / 4)));
 	else
-		return (((x * sin(-1) * env->zoom + y * sin(1) * env->zoom + z) 
-				+ (env->win_w / 2.5)));
+		return (((x * sin(-1) * env->zoom + y * sin(1) * env->zoom + z 
+			* env->zoom) + (env->win_w / 2.25)));
 
 }
 
