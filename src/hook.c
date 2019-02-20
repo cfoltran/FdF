@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/20 12:38:26 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:31:59 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	update_relief(t_env *env, int opt)
 	{
 		y = -1;
 		while (++y < env->map->y_max)
-			if (env->map->points[x][y] > 0 || env->map->points[x][y] < 0)
+			if (env->map->points[x][y] != 0)
 				env->map->points[x][y] += (opt == 0) ? -3 : 3;
 	}
 }
