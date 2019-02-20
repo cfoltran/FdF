@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/12 16:46:22 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/20 12:38:26 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void	update_relief(t_env *env, int opt)
 	{
 		y = -1;
 		while (++y < env->map->y_max)
-			if (env->map->points[x][y] > 0)
-				env->map->points[x][y] += (opt == 0 &&
-				env->map->points[x][y] - 1 > 0) ? -1 : 1;
+			if (env->map->points[x][y] > 0 || env->map->points[x][y] < 0)
+				env->map->points[x][y] += (opt == 0) ? -3 : 3;
 	}
 }
 
@@ -48,7 +47,11 @@ void	display_usage(t_env *env)
 	mlx_string_put(env->mlx, env->window, x + 40, y + 120, 0xFFFFFF,
 	"Relief    	R    E");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 150, 0xFFFFFF,
-	"Color    	   C");
+	"Color    	    C");
+	mlx_string_put(env->mlx, env->window, x + 40, y + 180, 0xFFFFFF,
+	"Isometric    I");
+	mlx_string_put(env->mlx, env->window, x + 40, y + 210, 0xFFFFFF,
+	"Parallel     P");
 }
 
 int		keylogger(int code, t_env *env)

@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/20 11:18:58 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/20 11:36:35 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_env
 	int				color;
 	int				movex;
 	int				movey;
+	int				proj;
 	int				**iso;
 	t_map			*map;
 	t_img			*img;
