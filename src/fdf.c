@@ -5,22 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2019/02/11 12:38:56 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 12:39:12 by clfoltra         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-#include "fdf.h"
-#include "libft.h"
-=======
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/18 19:44:32 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/20 11:18:42 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
->>>>>>> origin/clement
 #include "parser.h"
 #include "mlx.h"
 #include "fdf.h"
