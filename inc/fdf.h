@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/20 11:36:35 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:06:41 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 # include <stdlib.h>
 # include "parser.h"
-# define WINDOW_X	1920
-# define WINDOW_Y	1080
+# define WINDOW_X	1000
+# define WINDOW_Y	800
 # define USG		1
 # define MEM		2
 # define ARG		3
