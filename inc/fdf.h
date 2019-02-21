@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 19:06:41 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 20:15:20 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 # include <stdlib.h>
 # include "parser.h"
-# define WINDOW_X	1000
-# define WINDOW_Y	800
+# define WINDOW_X	1500
+# define WINDOW_Y	900
 # define USG		1
 # define MEM		2
 # define ARG		3
@@ -47,13 +47,14 @@ typedef struct		s_env
 	char			*name;
 	int				win_w;
 	int				win_h;
-	int				zoom;
+	double				zoom;
 	int				pixels;
 	int				color;
-	int				movex;
-	int				movey;
+	double				movex;
+	double				movey;
 	int				proj;
 	int				**iso;
+	double				alt;
 	t_map			*map;
 	t_img			*img;
 	t_pt			*point;

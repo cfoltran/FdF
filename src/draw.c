@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 19:22:33 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 20:24:50 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int		iso(t_env *env, int x, int y, int opt)
 
 	z = env->map->points[x][y];
 	if (opt == 1)
-		return (((x * cos(-1) * env->zoom + y * cos(1) * env->zoom + z * cos(-3)
-					* env->zoom / 30 * env->map->x_max) + (env->win_h / 4)));
+		return ((x * cos(-1) * env->zoom + y * cos(1) * env->zoom + z * 
+				env->alt * cos(-3) * env->zoom / 200 * env->map->x_max)
+				+ (env->win_h / 4));
 	else
-		return (((x * sin(-1) * env->zoom + y * sin(1) * env->zoom + z * sin(-3)
-					* env->zoom / 30 * env->map->y_max) + (env->win_w / 2.25)) + 0 * 50);
+		return ((x * sin(-1) * env->zoom + y * sin(1) * env->zoom + z * 
+				env->alt * sin(-3) * env->zoom / 200 * env->map->y_max) +
+				(env->win_w / 2.25));
 }
 
 void	init_iso_tab(t_map *map, t_env *env)

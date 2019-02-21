@@ -6,44 +6,13 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 17:37:30 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 20:25:40 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "keymap.h"
 #include "mlx.h"
-
-void	update_relief(t_env *env, int opt)
-{
-	int x;
-	int y;
-	int z;
-
-	x = -1;
-	while (++x < env->map->x_max)
-	{
-		y = -1;
-		while (++y < env->map->y_max)
-		{
-			z = env->map->points[x][y];
-			if (z != 0 && z + 3 != 0 && opt == 1)
-				env->map->points[x][y] += 3;
-			if (z != 0 && z - 3 != 0 && opt == 0)
-				env->map->points[x][y] -= 3;
-		}
-	}
-
-	int j = -1;
-	for(int i = 0; i < env->map->x_max; i++)
-	{
-		j = -1;
-		while (++j < env->map->y_max)
-			printf (" %d ", env->map->points[i][j]);
-		printf("\n");
-	}
-	
-}
 
 void	display_usage(t_env *env)
 {
@@ -77,10 +46,10 @@ int		keylogger(int code, t_env *env)
 	(code == LEFT) ? env->movey -= 10 : 0;
 	(code == DOWN) ? env->movex += 10 : 0;
 	(code == UP) ? env->movex -= 10 : 0;
-	(code == MINUS) ? env->zoom += 1 : 0;
-	(code == PLUS) ? env->zoom -= 1 : 0;
-	(code == R) ? update_relief(env, 1) : 0;
-	(code == E) ? update_relief(env, 0) : 0;
+	(code == MINUS) ? env->zoom += 0.5 : 0;
+	(code == PLUS) ? env->zoom -= 0.5 : 0;
+	(code == R) ? env->alt += 0.1 : 0;
+	(code == E) ? env->alt -= 0.1 : 0;
 	if (code == C)
 		env->color = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
 	mlx_clear_window(env->mlx, env->window);
