@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/20 13:31:59 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 16:51:54 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	update_relief(t_env *env, int opt)
 {
 	int x;
 	int y;
+	(void) opt;
 
 	x = -1;
 	while (++x < env->map->x_max)
