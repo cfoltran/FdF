@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 16:51:54 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:37:30 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,31 @@ void	update_relief(t_env *env, int opt)
 {
 	int x;
 	int y;
-	(void) opt;
+	int z;
 
 	x = -1;
 	while (++x < env->map->x_max)
 	{
 		y = -1;
 		while (++y < env->map->y_max)
-			if (env->map->points[x][y] != 0)
-				env->map->points[x][y] += (opt == 0) ? -3 : 3;
+		{
+			z = env->map->points[x][y];
+			if (z != 0 && z + 3 != 0 && opt == 1)
+				env->map->points[x][y] += 3;
+			if (z != 0 && z - 3 != 0 && opt == 0)
+				env->map->points[x][y] -= 3;
+		}
 	}
+
+	int j = -1;
+	for(int i = 0; i < env->map->x_max; i++)
+	{
+		j = -1;
+		while (++j < env->map->y_max)
+			printf (" %d ", env->map->points[i][j]);
+		printf("\n");
+	}
+	
 }
 
 void	display_usage(t_env *env)

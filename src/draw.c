@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 16:52:47 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:36:03 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		iso(t_env *env, int x, int y, int opt)
 	int z;
 
 	z = env->map->points[x][y];
+
 	if (opt == 1)
 		return (((x * cos(-1) * env->zoom + y * cos(1) * env->zoom + z
 		* cos(-1)) + (env->win_h / 4)));
