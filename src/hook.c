@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 11:20:36 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:34:08 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ void	display_usage(t_env *env)
 	"Parallel     P");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 240, 0xFFFFFF,
 	"View         V");
+}
+
+int			scroll(int code, int x, int y, t_env *env)
+{
+	(void) x;
+	(void) y;
+
+	if (code == SRLUP)
+		env->zoom += 1;
+	else if (code == SRLDO)
+		env->zoom -= 1;
+	mlx_clear_window(env->mlx, env->window);
+	refresh(env);
+	return (0);
 }
 
 int		keylogger(int code, t_env *env)

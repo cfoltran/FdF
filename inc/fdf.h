@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 11:23:26 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:32:42 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int					keylogger(int code, t_env *env);
 int					**isometric_chart(t_env *env);
 int					key_repeat(int key, t_env *env);
 int					iso(t_env *env, int x, int y, int opt);
+int					scroll(int code, int x, int y, t_env *env);
 
 #endif

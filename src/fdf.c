@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 11:22:18 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:45:21 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		init(t_env *env)
 		env->name)))
 		errors(MLX);
 	refresh(env);
+	(!(mlx_hook(env->window, 4, 0, scroll, env))) ? errors(MLX) : 0;
 	(!(mlx_hook(env->window, 2, 5, keylogger, env))) ? errors(MLX) : 0;
 	(!(mlx_loop(env->mlx))) ? errors(MLX) : 0;
 	return (0);
