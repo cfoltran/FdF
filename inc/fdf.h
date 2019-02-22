@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:53:23 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 20:15:20 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 11:23:26 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ typedef struct		s_pt
 
 typedef struct		s_env
 {
+	double			movex;
+	double			movey;
+	double			zoom;
+double				alt;
 	void			*window;
 	void			*mlx;
 	char			*name;
 	int				win_w;
 	int				win_h;
-	double				zoom;
 	int				pixels;
 	int				color;
-	double				movex;
-	double				movey;
 	int				proj;
 	int				**iso;
-	double				alt;
 	t_map			*map;
 	t_img			*img;
 	t_pt			*point;
