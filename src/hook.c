@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 20:25:40 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:04:29 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ void	display_usage(t_env *env)
 int		keylogger(int code, t_env *env)
 {
 	(code == ESC) ? exit(0) : 0;
-	(code == RIGHT) ? env->movey += 10 : 0;
-	(code == LEFT) ? env->movey -= 10 : 0;
-	(code == DOWN) ? env->movex += 10 : 0;
-	(code == UP) ? env->movex -= 10 : 0;
+	(code == RIGHT) ? env->movey -= 10 : 0;
+	(code == LEFT) ? env->movey += 10 : 0;
+	(code == DOWN) ? env->movex -= 10 : 0;
+	(code == UP) ? env->movex += 10 : 0;
 	(code == MINUS) ? env->zoom += 0.5 : 0;
 	(code == PLUS) ? env->zoom -= 0.5 : 0;
 	(code == R) ? env->alt += 0.1 : 0;
 	(code == E) ? env->alt -= 0.1 : 0;
+	(code == I) ? env->proj = 0 : 0;
+	(code == P) ? env->proj = 1 : 0;
 	if (code == C)
 		env->color = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
 	mlx_clear_window(env->mlx, env->window);
