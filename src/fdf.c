@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 15:45:21 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:40:44 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	apply_iso(t_env *env)
 
 	x = -1;
 	i = -1;
-	init_iso_tab(env->map, env);
+	init_coord_tab(env->map, env);
 	while (++x < env->map->x_max)
 	{
 		y = -1;
 		while (++y < env->map->y_max)
 		{
-			env->iso[++i][0] = iso(env, x, y, 1);
-			env->iso[i][1] = iso(env, x, y, 0);
-			env->iso[i][0] += env->movex;
-			env->iso[i][1] += env->movey;
+			env->coord[++i][0] = iso(env, x, y, 1);
+			env->coord[i][1] = iso(env, x, y, 0);
+			env->coord[i][0] += env->movex;
+			env->coord[i][1] += env->movey;
 		}
 	}
 }
@@ -46,7 +46,10 @@ void	refresh(t_env *env)
 	&img.s_line, &img.endian)))
 		errors(MLX);
 	env->img = &img;
-	apply_iso(env);
+	if (env->proj)
+		apply_par(env);
+	else
+		apply_iso(env);
 	draw(env);
 	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image
 	, 0, 0)))
@@ -74,7 +77,8 @@ int		ft_fdf(char *argv)
 	t_map	*map;
 
 	ft_strcmp(&argv[ft_strlen(argv) - 4], ".fdf") != 0 ? errors(ARG) : 0;
-	(!(map = fdf_parser(argv))) ? errors(3) : 0;
+	if (!(map = fdf_parser(argv)))
+		errors(3);
 	env.movex = 0;
 	env.movey = 0;
 	env.alt = 0;
@@ -85,7 +89,8 @@ int		ft_fdf(char *argv)
 	env.color = 0xFFFFFF;
 	env.win_w = WINDOW_X;
 	env.win_h = WINDOW_Y;
-	env.iso = NULL;
+	env.coord = NULL;
+	env.proj = 0;
 	init(&env);
 	return (0);
 }

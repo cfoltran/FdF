@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:50:31 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 15:31:22 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:40:01 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@
 # define G      5   
 # define R      15
 # define E      14
+# define P		35
+# define I		34
 
 #endif

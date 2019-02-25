@@ -18,12 +18,14 @@
 
 # Program
 fdf
+fdf_test
 
 # Callgraph
 callgraph.ps
 
 ### Tests ###
 test/
+log/
 
 ### Build ###
 # Prerequisites

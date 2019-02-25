@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 15:10:34 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/18 19:11:45 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/19 14:13:08 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,49 @@
 #include "libft.h"
 #include "parser.h"
 
+static int	fill_line(t_map *map, int i, t_list *elt)
+{
+	char	**tab;
+	int		j;
+
+	if (!(tab = ft_strsplit(elt->content, " ")))
+		return (1);
+	if (!i)
+		map->y_max = ft_tablen(tab);
+	else if (ft_tablen(tab) != map->y_max)
+		return (1);
+	if (!(map->points[i] = (int*)malloc(sizeof(int) * ft_tablen(tab))))
+		return (1);
+	j = 0;
+	while (tab[j])
+	{
+		map->points[i][j] = ft_atoi(tab[j]);
+		j++;
+	}
+	ft_deltab(&tab);
+	return (0);
+}
+
 static int	fill_points(t_map *map, t_list *list)
 {
 	int		i;
-	int		j;
-	char	**tab;
 	t_list	*curr;
 
-	curr = list;
-	i = 0;
+	if (!list)
+		return (1);
+	if (fill_line(map, 0, list))
+		return (1);
+	i = 1;
+	curr = list->next;
 	while (curr)
 	{
-		if (!(tab = ft_strsplit(curr->content, " ")))
-			return (0);
-		map->y_max = ft_tablen(tab);
-		if (!(map->points[i] = (int*)malloc(sizeof(int) * map->y_max)))
-			return (0);
-		j = 0;
-		while (tab[j])
-		{
-			map->points[i][j] = ft_atoi(tab[j]);
-			j++;
-		}
-		ft_deltab(&tab);
+		if (fill_line(map, i, curr))
+			return (1);
 		i++;
 		curr = curr->next;
 	}
 	ft_lstdel(&list, &ft_delelt);
-	return (1);
+	return (0);
 }
 
 t_map		*fdf_parser(char *file_name)
@@ -71,7 +86,7 @@ t_map		*fdf_parser(char *file_name)
 	ret->y_max = 0;
 	if (!(ret->points = (int**)malloc(sizeof(int*) * ret->x_max)))
 		return (NULL);
-	if (!fill_points(ret, list))
+	if (fill_points(ret, list))
 		return (NULL);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/21 20:24:50 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/22 11:37:44 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		iso(t_env *env, int x, int y, int opt)
 				(env->win_w / 2.25));
 }
 
-void	init_iso_tab(t_map *map, t_env *env)
+void	init_coord_tab(t_map *map, t_env *env)
 {
 	int i;
 	int **tab;
@@ -41,23 +41,23 @@ void	init_iso_tab(t_map *map, t_env *env)
 		if (!(tab[i] = (int*)malloc(sizeof(int) * 2)))
 			errors(MEM);
 	i = -1;
-	if (env->iso)
+	if (env->coord)
 	{
 		while (++i < map->x_max * map->y_max)
-			free(env->iso[i]);
-		free(env->iso);
+			free(env->coord[i]);
+		free(env->coord);
 	}
-	env->iso = tab;
+	env->coord = tab;
 }
 
 void	draw_line(int i, t_env *env)
 {
 	t_pt pt;
 
-	pt.x1 = env->iso[i][1];
-	pt.x2 = env->iso[i + 1][1];
-	pt.y1 = env->iso[i][0];
-	pt.y2 = env->iso[i + 1][0];
+	pt.x1 = env->coord[i][1];
+	pt.x2 = env->coord[i + 1][1];
+	pt.y1 = env->coord[i][0];
+	pt.y2 = env->coord[i + 1][0];
 	pt.dx = abs(pt.x2 - pt.x1);
 	pt.dy = abs(pt.y2 - pt.y1);
 	if (pt.dx >= pt.dy && pt.dx != 0 && pt.dy != 0)
@@ -74,10 +74,10 @@ void	draw_column(int i, t_env *env)
 {
 	t_pt pt;
 
-	pt.x1 = env->iso[i][1];
-	pt.x2 = env->iso[i + env->map->y_max][1];
-	pt.y1 = env->iso[i][0];
-	pt.y2 = env->iso[i + env->map->y_max][0];
+	pt.x1 = env->coord[i][1];
+	pt.x2 = env->coord[i + env->map->y_max][1];
+	pt.y1 = env->coord[i][0];
+	pt.y2 = env->coord[i + env->map->y_max][0];
 	pt.dx = abs(pt.x2 - pt.x1);
 	pt.dy = abs(pt.y2 - pt.y1);
 	if (pt.dx >= pt.dy && pt.dx != 0 && pt.dy != 0)
