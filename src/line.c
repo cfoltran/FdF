@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:27:33 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 09:43:57 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:53:22 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ void	case2(t_env *env, t_pt pt)
 	a = (float)(pt.x2 - pt.x1) / (pt.y2 - pt.y1);
 	while (++i <= pt.dy)
 	{
-		if (pt.x1 + (int)(i * a) > 0 && (pt.x1 + (int)(i * a)) < env->win_w && (pt.y1 + i) > 0
-											&& pt.y1 + i < env->win_h)				
+		if (pt.x1 + (int)(i * a) > 0 && (pt.x1 + (int)(i * a)) < env->win_w
+			&& (pt.y1 + i) > 0 && pt.y1 + i < env->win_h)
 			env->img->datas[(pt.y1 + i) * env->win_w
 				+ (pt.x1 + (int)(i * a))] = env->color;
 	}
 }
-
 
 void	case3(t_env *env, t_pt pt)
 {

@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 09:40:40 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:48:59 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,10 @@ void	display_usage(t_env *env)
 	"View         V");
 }
 
-int			scroll(int code, int x, int y, t_env *env)
+int		scroll(int code, int x, int y, t_env *env)
 {
-	(void) x;
-	(void) y;
-
+	(void)x;
+	(void)y;
 	if (code == SRLUP)
 		env->zoom += 1;
 	else if (code == SRLDO)

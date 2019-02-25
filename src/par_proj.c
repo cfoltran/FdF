@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   par_proj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 11:25:01 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/22 12:53:31 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/25 09:51:22 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int		par(t_env *env, int x, int y, int flag)
 
 	z = env->map->points[x][y];
 	if (flag)
-		return ((x * 1 / tan(M_PI_4) * env->zoom + y * tan(M_PI_4) * env->zoom + z * 
-				env->alt * - tan(M_PI_4) * env->zoom / 200 * env->map->x_max)
-				+ (env->win_h / 4));
+		return ((x * 1 / tan(M_PI_4) * env->zoom + y * tan(M_PI_4) * env->zoom
+				+ z * env->alt * -tan(M_PI_4) * env->zoom / 200 *
+				env->map->x_max) + (env->win_h / 4));
 	else
-		return ((x * 1 / tan(M_PI_4) * env->zoom + y * tan(- M_PI_4) * env->zoom + z * 
-				env->alt * tan(M_PI_4) * env->zoom / 200 * env->map->y_max) +
-				(env->win_w / 2.25));
+		return ((x * 1 / tan(M_PI_4) * env->zoom + y * tan(-M_PI_4) * env->zoom
+				+ z * env->alt * tan(M_PI_4) * env->zoom / 200 *
+				env->map->y_max) + (env->win_w / 2.25));
 }
 
 void	apply_par(t_env *env)
