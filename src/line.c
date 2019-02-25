@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:27:33 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 09:53:22 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:57:27 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	case3(t_env *env, t_pt pt)
 	i = pt.y1;
 	while (++i <= pt.y2)
 	{
-		if (pt.x1 > 0 && pt.x1 < env->win_w && pt.y1 > 0 && pt.y1 < env->win_h)
-			env->img->datas[pt.y1 * env->win_w + i] = env->color;
+		if (pt.x1 > 0 && pt.x1 < env->win_w && i > 0 && i < env->win_h)
+			env->img->datas[i * env->win_w + pt.x1] = env->color;
 	}
 }
 
