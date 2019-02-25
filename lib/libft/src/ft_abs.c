@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swapint.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 15:17:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/11 15:24:25 by clfoltra         ###   ########.fr       */
+/*   Created: 2019/02/15 10:02:46 by cvignal           #+#    #+#             */
+/*   Updated: 2019/02/15 10:11:22 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swapint(int *a, int *b)
-{
-	int tmp;
+#include "libft.h"
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+int			ft_iabs(int a)
+{
+	return (a > 0 ? a : -a);
+}
+
+long long	ft_llabs(long long a)
+{
+	return (a > 0 ? a : -a);
 }

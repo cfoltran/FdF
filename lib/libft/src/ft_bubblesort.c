@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tablen.c                                        :+:      :+:    :+:   */
+/*   ft_bubblesort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/28 17:55:52 by cvignal           #+#    #+#             */
-/*   Updated: 2019/01/28 17:56:29 by cvignal          ###   ########.fr       */
+/*   Created: 2019/01/29 16:51:17 by cvignal           #+#    #+#             */
+/*   Updated: 2019/01/29 16:56:06 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tablen(char **tab)
+void	ft_bubblesort(char **array, size_t len)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	char	*tmp;
 
 	i = 0;
-	while (tab[i])
+	while (i < len - 1)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (ft_strcmp(array[i], array[j]) > 0)
+			{
+				tmp = array[j];
+				array[j] = array[i];
+				array[i] = tmp;
+			}
+			j++;
+		}
 		i++;
-	return (i);
+	}
 }

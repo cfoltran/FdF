@@ -6,16 +6,18 @@
 /*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 12:05:24 by cvignal           #+#    #+#             */
-/*   Updated: 2018/11/27 12:06:16 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/15 10:06:23 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_max(int a, int b, int c)
+int			ft_imax(int a, int b)
 {
-	if (a > b)
-		return (a > c ? a : c);
-	else
-		return (b > c ? b : c);
+	return (a > b ? a : b);
+}
+
+long long	ft_llmax(long long a, long long b)
+{
+	return (a > b ? a : b);
 }

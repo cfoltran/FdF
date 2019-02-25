@@ -6,7 +6,7 @@
 /*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 12:59:53 by cvignal           #+#    #+#             */
-/*   Updated: 2018/11/08 10:24:14 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/18 16:03:53 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	is_neg = 0;
-	while (*str == '\t' || *str == ' ' || *str == '\n' ||
-			*str == '\v' || *str == '\f' || *str == '\r' || *str == '0')
+	while (*str == '\t' || *str == ' ' || *str == '\n'
+			|| *str == '\v' || *str == '\f' || *str == '\r' || *str == '0')
 		str++;
 	if (*str == '+' || *str == '-')
 	{
 		is_neg = (*str == '-' ? 1 : 0);
 		str++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (*str && *str >= '0' && *str <= '9')
 	{
 		res = res * 10 + *str - '0';
 		str++;

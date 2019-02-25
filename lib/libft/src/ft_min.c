@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strfindchar.c                                   :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvignal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/21 14:29:01 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/21 14:29:03 by cvignal          ###   ########.fr       */
+/*   Created: 2019/02/15 10:02:19 by cvignal           #+#    #+#             */
+/*   Updated: 2019/02/15 10:06:56 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
+#include "libft.h"
 
-ssize_t		ft_strfindchar(const char *str, char c)
+int			ft_imin(int a, int b)
 {
-	ssize_t	i;
+	return (a < b ? a : b);
+}
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			return (i);
-		i++;
-	}
-	return (-1);
+long long	ft_llmin(long long a, long long b)
+{
+	return (a < b ? a : b);
 }
