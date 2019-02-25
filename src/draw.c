@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 11:05:49 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/25 11:17:58 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		iso(t_env *env, int x, int y, int opt)
 	else
 		return ((x * sin(-1) * env->zoom + y * sin(1) * env->zoom + z
 					* env->alt * sin(-3) * env->zoom / 200 * env->map->y_max)
-				 		+ (env->win_w / 2.25));
+						+ (env->win_w / 2.25));
 }
 
 int		init_coord_tab(t_map *map, t_env *env)
