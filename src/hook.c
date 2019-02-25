@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 10:45:49 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/25 10:50:33 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	display_usage(t_env *env)
 	mlx_string_put(env->mlx, env->window, x + 40, y + 60, 0xFFFFFF,
 	"Move      Arrows");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 90, 0xFFFFFF,
-	"Zoom      	+    -");
+	"Zoom      +-SROLL");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 120, 0xFFFFFF,
 	"Relief    	R    E");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 150, 0xFFFFFF,
@@ -37,8 +37,6 @@ void	display_usage(t_env *env)
 	"Isometric    I");
 	mlx_string_put(env->mlx, env->window, x + 40, y + 210, 0xFFFFFF,
 	"Parallel     P");
-	mlx_string_put(env->mlx, env->window, x + 40, y + 240, 0xFFFFFF,
-	"View         V");
 }
 
 int		scroll(int code, int x, int y, t_env *env)
