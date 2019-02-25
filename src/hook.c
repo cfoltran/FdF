@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:45:16 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 09:48:59 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:45:49 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int		scroll(int code, int x, int y, t_env *env)
 	else if (code == SRLDO)
 		env->zoom -= 1;
 	mlx_clear_window(env->mlx, env->window);
-	refresh(env);
+	if (refresh(env))
+		return (1);
 	return (0);
 }
 
@@ -70,6 +71,7 @@ int		keylogger(int code, t_env *env)
 	if (code == C)
 		env->color = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
 	mlx_clear_window(env->mlx, env->window);
-	refresh(env);
+	if (refresh(env))
+		return (1);
 	return (0);
 }

@@ -6,12 +6,12 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 16:50:31 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 09:40:01 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:48:42 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYMAP_H
-#define KEYMAP_H
+# define KEYMAP_H
 
 # define SRLUP  4
 # define SRLDO  5
@@ -24,7 +24,7 @@
 # define MINUS  24
 # define C      8
 # define D      2
-# define G      5   
+# define G      5
 # define R      15
 # define E      14
 # define P		35

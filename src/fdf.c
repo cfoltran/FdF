@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 13:23:14 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 10:14:59 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:47:30 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "mlx.h"
 #include "fdf.h"
 
-void	apply_iso(t_env *env)
+int		apply_iso(t_env *env)
 {
 	int x;
 	int y;
@@ -22,7 +22,8 @@ void	apply_iso(t_env *env)
 
 	x = -1;
 	i = -1;
-	init_coord_tab(env->map, env);
+	if (init_coord_tab(env->map, env))
+		return (1);
 	while (++x < env->map->x_max)
 	{
 		y = -1;
@@ -34,40 +35,53 @@ void	apply_iso(t_env *env)
 			env->coord[i][1] += env->movey;
 		}
 	}
+	return (0);
 }
 
-void	refresh(t_env *env)
+int		refresh(t_env *env)
 {
 	t_img img;
 
 	if (!(img.image = mlx_new_image(env->mlx, env->win_w, env->win_h)))
-		errors(MLX);
+		return (errors(MLX));
 	if (!(img.datas = (int *)mlx_get_data_addr(img.image, &img.bpp,
 	&img.s_line, &img.endian)))
-		errors(MLX);
+		return (errors(MLX));
 	env->img = &img;
 	if (env->proj)
-		apply_par(env);
+	{
+		if (apply_par(env))
+			return (1);
+	}
 	else
-		apply_iso(env);
+	{
+		if (apply_iso(env))
+			return (1);
+	}
 	draw(env);
 	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image
 	, 0, 0)))
-		errors(MLX);
+		return (errors(MLX));
 	display_usage(env);
 	mlx_destroy_image(env->mlx, env->img->image);
+	return (0);
 }
 
 int		init(t_env *env)
 {
-	(!(env->mlx = mlx_init())) ? errors(MLX) : 0;
+	if (!(env->mlx = mlx_init()))
+		return (errors(MLX));
 	if (!(env->window = mlx_new_window(env->mlx, env->win_w, env->win_h,
 		env->name)))
-		errors(MLX);
-	refresh(env);
-	(!(mlx_hook(env->window, 4, 0, scroll, env))) ? errors(MLX) : 0;
-	(!(mlx_hook(env->window, 2, 5, keylogger, env))) ? errors(MLX) : 0;
-	(!(mlx_loop(env->mlx))) ? errors(MLX) : 0;
+		return (errors(MLX));
+	if (refresh(env))
+		return (1);
+	if (!(mlx_hook(env->window, 4, 0, scroll, env)))
+		return (errors(MLX));
+	if (!(mlx_hook(env->window, 2, 5, keylogger, env)))
+		return (errors(MLX));
+	if (!(mlx_loop(env->mlx)))
+		return (errors(MLX));
 	return (0);
 }
 
@@ -76,14 +90,16 @@ int		ft_fdf(char *argv)
 	t_env	env;
 	t_map	*map;
 
-	ft_strcmp(&argv[ft_strlen(argv) - 4], ".fdf") != 0 ? errors(ARG) : 0;
+	if (!ft_strequ(&argv[ft_strlen(argv) - 4], ".fdf"))
+		return (errors(ARG));
 	if (!(map = fdf_parser(argv)))
-		errors(3);
+		return (errors(ARG));
 	env.movex = 0;
 	env.movey = 0;
 	env.alt = 0;
 	env.map = map;
-	env.name = ft_strjoin("FDF - ", argv);
+	if (!(env.name = ft_strjoin("FDF - ", argv)))
+		return (errors(MEM));
 	env.zoom = 20;
 	env.proj = 0;
 	env.color = 0xFFFFFF;
@@ -91,15 +107,19 @@ int		ft_fdf(char *argv)
 	env.win_h = WINDOW_Y;
 	env.coord = NULL;
 	env.proj = 0;
-	init(&env);
+	if (init(&env))
+		return (1);
 	return (0);
 }
 
 int		main(int ac, char **av)
 {
 	if (ac != 2)
-		errors(1);
-	else
-		ft_fdf(av[1]);
+	{
+		ft_dprintf(2, "Usage : %s <filename>", av[0]);
+		return (1);
+	}
+	else if (ft_fdf(av[1]))
+		return (1);
 	return (0);
 }

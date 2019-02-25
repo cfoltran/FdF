@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 11:25:01 by cvignal           #+#    #+#             */
-/*   Updated: 2019/02/25 09:51:22 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:46:53 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		par(t_env *env, int x, int y, int flag)
 				env->map->y_max) + (env->win_w / 2.25));
 }
 
-void	apply_par(t_env *env)
+int		apply_par(t_env *env)
 {
 	int x;
 	int y;
@@ -37,7 +37,8 @@ void	apply_par(t_env *env)
 
 	x = -1;
 	i = -1;
-	init_coord_tab(env->map, env);
+	if (init_coord_tab(env->map, env))
+		return (1);
 	while (++x < env->map->x_max)
 	{
 		y = -1;
@@ -49,4 +50,5 @@ void	apply_par(t_env *env)
 			env->coord[i][1] += env->movey;
 		}
 	}
+	return (0);
 }

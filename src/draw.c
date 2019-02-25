@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/25 10:15:32 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:41:42 by cvignal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,19 @@ int		iso(t_env *env, int x, int y, int opt)
 				(env->win_w / 2.25));
 }
 
-void	init_coord_tab(t_map *map, t_env *env)
+int		init_coord_tab(t_map *map, t_env *env)
 {
 	int i;
 	int **tab;
 
 	i = -1;
 	if (!(tab = (int**)malloc(sizeof(int*) * (map->x_max * map->y_max))))
-		errors(MEM);
+		return (errors(MEM));
 	while (++i < map->x_max * map->y_max)
+	{
 		if (!(tab[i] = (int*)malloc(sizeof(int) * 2)))
-			errors(MEM);
+			return (errors(MEM));
+	}
 	i = -1;
 	if (env->coord)
 	{
@@ -48,6 +50,7 @@ void	init_coord_tab(t_map *map, t_env *env)
 		free(env->coord);
 	}
 	env->coord = tab;
+	return (0);
 }
 
 void	draw_line(int i, t_env *env)
