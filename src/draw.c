@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:12:20 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/22 11:37:44 by cvignal          ###   ########.fr       */
+/*   Updated: 2019/02/25 09:44:17 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	draw_line(int i, t_env *env)
 		case1(env, pt);
 	if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
 		case2(env, pt);
-	// if (pt.dx == 0)
-	// 	case3(env, pt);
-	// if (pt.dy == 0)
-	// 	case4(env, pt);
+	if (pt.dx == 0)
+		case3(env, pt);
+	if (pt.dy == 0)
+		case4(env, pt);
 }
 
 void	draw_column(int i, t_env *env)
@@ -84,10 +84,10 @@ void	draw_column(int i, t_env *env)
 		case1(env, pt);
 	if (pt.dx < pt.dy && pt.dx != 0 && pt.dy != 0)
 		case2(env, pt);
-	// if (pt.dx == 0)
-	// 	case3(env, pt);
-	// if (pt.dy == 0)
-	// 	case4(env, pt);
+	if (pt.dx == 0)
+		case3(env, pt);
+	if (pt.dy == 0)
+		case4(env, pt);
 }
 
 void	draw(t_env *env)
