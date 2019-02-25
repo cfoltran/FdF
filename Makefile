@@ -6,7 +6,7 @@
 #    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/02/22 11:36:23 by cvignal          ###   ########.fr        #
+#    Updated: 2019/02/25 11:36:24 by cvignal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -216,11 +216,9 @@ lre: lfclean all
 clean: lclean
 	@ rm -f $(TMP)
 	@ $(MAKE) -C $(LIBFT_PATH) --no-print-directory clean
-	@ $(MAKE) -C $(LIBX_PATH) --no-print-directory clean
 
 fclean:	lfclean
 	@ $(MAKE) -C $(LIBFT_PATH) --no-print-directory fclean
-	@ $(MAKE) -C $(LIBX_PATH) --no-print-directory clean
 
 re:		fclean all
 
